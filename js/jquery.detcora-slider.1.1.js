@@ -32,6 +32,7 @@
           slidesLen = slides.length
           ;
 
+      // try to optimize this
       slides.each(function(i) {
         i += 1;
         $(this).attr("data-index", i);
@@ -128,7 +129,7 @@
       });
 
 
-
+      // why not if (defaults.autoPlay)?
       if (defaults.autoPlay === true) {
 
         var timer = function () {
@@ -147,12 +148,16 @@
 
       }
 
+      // why not if (defaults.customBullets)?
       if (defaults.customBullets === true) {
+          // why $(document.body).find?
         $(document.body).find(defaults.bulletsId).hover(function () {
           clearInterval(interval);
         }, function () {
           interval = setInterval(timer, defaults.autoSpeed);
         });
+        // repeated $(document.body).find(defaults.bulletsId)
+        // use 'on' delegation syntax
         $(document.body).find(defaults.bulletsId).children().on('click', function(e){
           e.preventDefault();
           slider.go($(this).index());
