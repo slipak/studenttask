@@ -61,7 +61,8 @@ $(function() {
 
 // placeholder
 //-----------------------------------------------------------------------------
-  $('input[placeholder], textarea[placeholder]').placeholder();
+// not found
+//  $('input[placeholder], textarea[placeholder]').placeholder();
 
 
 
@@ -69,11 +70,15 @@ $(function() {
   //-----------------------------------------------------------------------------
 
   $('.accordion-item header').on('click', function (evt) {
+    // what for?
     evt.preventDefault();
     var $this = $(this),
         $thisItem = $this.closest('.accordion-item'),
+        // you've already got $this.closest('.accordion-item')
         $itemSiblings = $this.closest('.accordion-item').siblings(),
+        // you've already got $this.closest('.accordion-item')
         thisId = $this.closest('.accordion-item').attr('id'),
+        // you've already got $this.closest('.accordion-item').siblings()
         $itemSiblingsContent = $this.closest('.accordion-item').siblings().find('.content-block'),
         $itemContent = $thisItem.find('.content-block');
     if(! $itemContent.is('visible')) {
@@ -81,6 +86,7 @@ $(function() {
       $this.addClass('active');
       $itemSiblingsContent.slideUp();
       $itemContent.slideDown();
+      // combine these two
       $('.top-nav').find('a').removeClass('active');
       $('.top-nav').find('[data-accordion="#' + thisId +'"]').addClass('active');
     }
@@ -93,10 +99,12 @@ $(function() {
         $thisDataContent = $thisData.find('.content-block');
 //    console.log($thisData);
     if(! $this.hasClass('active')) {
+      // all this code is the same as before, move it to function
       $thisData.siblings().find('.content-block').slideUp();
       $thisDataContent.slideDown();
       $thisData.siblings().find('header').removeClass('active');
       $thisData.find('header').addClass('active');
+      // repeated twice
       $thisDataContent.slideDown();
       $this.closest('li').siblings().find('a').removeClass('active');
       $this.addClass('active');
@@ -107,6 +115,7 @@ $(function() {
   $('.top-nav li li').on('click', function (evt) {
     evt.preventDefault();
     var $this = $(this);
+    // you've already got $this.closest('ul').siblings('a')
       if(! $this.closest('ul').siblings('a').hasClass('active')) {
         $this.closest('ul').siblings('a').trigger('click');
     }
@@ -126,6 +135,7 @@ $(function() {
      var app = {
 
        init: function () {
+       // indentation !!
        this.setUpListeners();
        },
 
@@ -151,6 +161,7 @@ $(function() {
 
 
        validateForm: function (form){
+       // use $ for jQuery element sets
        var inputs = form.find('input'),
        valid = true;
 
@@ -162,6 +173,7 @@ $(function() {
 
            inputs.parents('.form-field').find('.validation-block').remove();
 
+         // use form.find here
          var username = $('input[name=username]');
          var usernameVal = username.val();
          var email = $('input[name=email]');
@@ -170,18 +182,24 @@ $(function() {
          var dateVal = date.val();
          var formField = username.closest('.form-field'),
          label = formField.find('label').text().toLowerCase(),
+         // not used
          textError = '* Please enter a valid ' + label;
 
 
          if(!regUsername.test(usernameVal)){
          username.closest('.form-field').addClass('has-error').removeClass('has-success');
+         // already have username.closest('.form-field')
+         // why not to hide errors instead of removing/appending them?
+         // don't hardcode message text
          username.closest('.form-field').append('<div class="col-xs-12 col-sm-4 validation-block">* Please enter a valid name</div>');
          valid = false;
          } else{
+         // already have username.closest('.form-field')
          username.closest('.form-field').find('.validation-block').remove();
          username.closest('.form-field').addClass('has-success').removeClass('has-error');
          }
 
+         // this block is repeated 3 times. make a function
          if(!validEmail.test(emailVal)){
          email.closest('.form-field').addClass('has-error').removeClass('has-success');
          email.closest('.form-field').append('<div class="col-xs-12 col-sm-4 validation-block">* Please enter a valid email</div>');
