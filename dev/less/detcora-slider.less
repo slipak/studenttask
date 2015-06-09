@@ -1,0 +1,75 @@
+// detcora slider
+.detcora-slider {
+  overflow: hidden;
+  .pr;
+  .slider-container {
+    width: 10000px;
+    overflow: hidden;
+  }
+  .slide {
+    .fl;
+  }
+  .slider-track {
+    overflow: hidden;
+  }
+  .prev,
+  .next {
+    .pa;
+    width: 40px;
+    height: 100%;
+    top: 0;
+    text-indent: -9999px;
+    &:hover {
+      &:after {
+        .op(1);
+      }
+    }
+  }
+  .prev {
+    left: 0;
+    &:after {
+      .pa;
+      .op(0.6);
+      content: "";
+      top: 50%;
+      .triangle(left, 20px, 20px, #394263);
+      left: 50%;
+      margin-left: -10px;
+    }
+  }
+  .next {
+    right: 0;
+    &:after {
+      .pa;
+      content: "";
+      top: 50%;
+      .op(0.6);
+      .triangle(right, 20px, 20px, #394263);
+      left: 50%;
+      margin-left: -10px;
+    }
+  }
+  .nav {
+    text-align: right;
+    z-index: 150;
+    .pa;
+    right: 50px;
+    bottom: 20px;
+    .op(0.7);
+    a {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      text-indent: 9999px;
+      background: lighten(#394263, 30%);
+      border: 3px solid #394263;
+      + a {
+        margin-left: 10px;
+      }
+      &.current {
+        background: darken(#394263, 5%);
+        border-color: lighten(#394263,10%);
+      }
+    }
+  }
+}

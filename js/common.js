@@ -49,42 +49,6 @@ if(ieDetector.ieVersion == 10 || ieDetector.ieVersion == 11) {
 $(function() {
 
 
-  /*var widthSlide = 1170,
-      animationSpeed = 1000,
-      pauseSlider = 2000,
-      currentSlide = 1;
-
-
-  var $slider = $('.slider'),
-      $slideContainer = $slider.find('ul'),
-      $slides = $slideContainer.find('li');
-
-  var interval;
-  function startSlider() {
-    interval = setInterval(function(){
-      $slideContainer.animate({'margin-left': '-='+widthSlide}, animationSpeed, function(){
-          currentSlide++;
-          if(currentSlide === $slides.length) {
-            currentSlide = 1;
-            $slideContainer.css('margin-left','0');
-          }
-        }
-      );
-    }, pauseSlider);
-  };
-
-
-  function stopSlider() {
-    clearInterval(interval);
-  };
-
-  $slider.on('mouseenter', stopSlider).on('mouseleave', startSlider);
-
-
-  startSlider();
-
-
-*/
   $('.main-slider').detcoraSlider({
     customBullets: true,
     bulletsId: '#secondBullets',
