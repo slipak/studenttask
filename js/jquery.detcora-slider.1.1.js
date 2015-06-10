@@ -29,6 +29,7 @@
           slides = $container.children()
           ;
 
+
       slides.each(function(i) {
         i += 1;
         var mainLink = '<a href="#">' + i + '</a>';
