@@ -26,17 +26,14 @@
       var $wrapper = $this,
           $container = $this.find('.slider-track'),
           nav = $wrapper.find('.nav'),
-          wrapperWidth = $wrapper.width(),
-          currentIndex = 0,
-          slides = $container.children(),
-          slidesLen = slides.length
+          slides = $container.children()
           ;
 
       slides.each(function(i) {
         i += 1;
-        $(this).attr("data-index", i);
-        if (defaults.bullets === true) {
-          nav.append('<a href="#">' + i + '</a>');
+        var mainLink = '<a href="#">' + i + '</a>';
+        if (defaults.bullets) {
+          nav.append(mainLink);
         }
       });
 
@@ -129,7 +126,7 @@
 
 
 
-      if (defaults.autoPlay === true) {
+      if (defaults.autoPlay) {
 
         var timer = function () {
           slider.next();
@@ -148,12 +145,12 @@
       }
 
       if (defaults.customBullets === true) {
-        $(document.body).find(defaults.bulletsId).hover(function () {
+        $($(defaults.bulletsId)).hover(function () {
           clearInterval(interval);
         }, function () {
           interval = setInterval(timer, defaults.autoSpeed);
         });
-        $(document.body).find(defaults.bulletsId).children().on('click', function(e){
+        $($(defaults.bulletsId)).on('click', '.change-slide', function(e){
           e.preventDefault();
           slider.go($(this).index());
         });
