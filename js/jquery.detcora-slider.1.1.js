@@ -7,6 +7,7 @@
       autoPlay: false,
       bullets: true,
       customBullets: false,
+      customBulletClass: '.bullet',
       bulletsId: '#cust',
       created: function () {
       }
@@ -151,7 +152,7 @@
         }, function () {
           interval = setInterval(timer, defaults.autoSpeed);
         });
-        $($(defaults.bulletsId)).on('click', '.change-slide', function(e){
+        $($(defaults.bulletsId)).on('click', defaults.customBulletClass, function(e){
           e.preventDefault();
           slider.go($(this).index());
         });
