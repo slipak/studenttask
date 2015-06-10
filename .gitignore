@@ -3,7 +3,6 @@
 node_modules
 source
 GruntTemplate.zip
-js/libs.js
 js/production.min.js
 dev/js/production.js
 readme.html
