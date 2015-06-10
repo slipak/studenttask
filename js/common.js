@@ -63,9 +63,8 @@ $(function() {
   //-----------------------------------------------------------------------------
 
 
-  // name for function corectly
-  //-----------------------------------------------------------------------------
-  function accordionMove(elem) {
+
+  function mainAccordionAnimate(elem) {
     elem.siblings().find('.content-block').slideUp();
     elem.find('.content-block').slideDown();
     elem.siblings().find('header').removeClass('active');
@@ -78,8 +77,8 @@ $(function() {
         thisId = $thisItem.attr('id'),
         $itemContent = $thisItem.find('.content-block');
     if(! $itemContent.is(':visible')) {
-      accordionMove($thisItem);
-      $('.top-nav').find('a').removeClass('active').filter('[data-accordion="#' + thisId +'"]').addClass('active');
+        mainAccordionAnimate($thisItem);
+        $('.top-nav').find('a').removeClass('active').filter('[data-accordion="#' + thisId +'"]').addClass('active');
     }
   });
 
@@ -88,7 +87,7 @@ $(function() {
     var $this = $(this),
         $thisData = $($this.data('accordion'));
     if(! $this.hasClass('active')) {
-        accordionMove($thisData);
+        mainAccordionAnimate($thisData);
         $this.addClass('active').closest('li').siblings().find('a').removeClass('active');
     }
   });
