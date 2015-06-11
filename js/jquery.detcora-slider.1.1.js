@@ -30,14 +30,16 @@
           slides = $container.children()
           ;
 
-
+      var mainLink = "";
       slides.each(function(i) {
         i += 1;
-        var mainLink = '<a href="#">' + i + '</a>';
+
         if (defaults.bullets) {
-          nav.append(mainLink);
+          mainLink += '<a href="#">' + i + '</a>';
+
         }
       });
+      nav.append(mainLink);
 
       var Slider = function () {
 
@@ -147,12 +149,12 @@
       }
 
       if (defaults.customBullets === true) {
-        $($(defaults.bulletsId)).hover(function () {
+        $(defaults.bulletsId).hover(function () {
           clearInterval(interval);
         }, function () {
           interval = setInterval(timer, defaults.autoSpeed);
         });
-        $($(defaults.bulletsId)).on('click', defaults.customBulletClass, function(e){
+        $(defaults.bulletsId).on('click', defaults.customBulletClass, function(e){
           e.preventDefault();
           slider.go($(this).index());
         });
