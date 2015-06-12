@@ -2,6 +2,18 @@
 .accordion-wrapper {
   border: 1px solid #394263;
   .accordion-item  {
+    .content-block {
+      display: none;
+    }
+    &.current {
+      header {
+        background-color: lighten(#394263, 5%);
+        border-bottom-color: #0f7073;
+      }
+      .content-block {
+        display: block;
+      }
+    }
     header {
       padding: 20px 20px;
       background-color: #394263;
@@ -9,20 +21,14 @@
       text-transform: uppercase;
       border-bottom: 3px solid transparent;
       .tn;
-      &.active,
       &:hover {
         background-color: lighten(#394263, 5%);
         border-bottom-color: #0f7073;
       }
     }
     .content-block {
-      display: block;
       padding: 20px;
     }
-    + .accordion-item {
-      .content-block {
-        display: none;
-      }
-    }
+
   }
 }

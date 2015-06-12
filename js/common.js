@@ -62,55 +62,36 @@ $(function() {
   // accordion
   //-----------------------------------------------------------------------------
 
+    var accordionItems = $('.accordion-item');
+    var topNavItems = $('.top-nav ul').children();
 
-    function accordionSvitchActive(that, elem, dataAttr){
-        if(! that.hasClass('active')) {
-            elem.siblings().find('.content-block').slideUp();
-            elem.find('.content-block').slideDown();
-            elem.siblings().find('header').removeClass('active');
-            elem.find('header').addClass('active');
-            $('.top-nav').find('a').removeClass('active').filter('[data-accordion="#' + dataAttr +'"]').addClass('active');
-            that.addClass('active').closest('li').siblings().find('a').removeClass('active');
-        }
+    accordionItems.first().addClass('current');
+    topNavItems.first().addClass('active');
+
+    function accordionSvitchActive(index) {
+        accordionItems
+            .removeClass('current')
+            .eq(index).addClass('current');
+        topNavItems
+            .removeClass('active')
+            .eq(index).addClass('active');
     }
 
     $('.accordion-item header').on('click', function () {
-
-        var $this = $(this),
-            $thisItem = $this.closest('.accordion-item'),
-            thisId = $thisItem.attr('id');
-
-        accordionSvitchActive($this, $thisItem, thisId);
+        var thisIndex = $(this).closest('.accordion-item').index();
+        accordionSvitchActive(thisIndex);
     });
 
     $('[data-accordion]').on('click', function(evt){
-
         evt.preventDefault();
-
-        var $this = $(this),
-            $thisData = $($this.data('accordion'));
-
-        accordionSvitchActive($this, $thisData);
+        var $thisIndex = $(this).closest('li').index();
+        accordionSvitchActive($thisIndex);
     });
 
-    $('.top-nav li li').on('click', function (evt) {
-
-        evt.preventDefault();
-
-        var $this = $(this),
-            $siblingsLink = $this.closest('ul').siblings('a'),
-            $siblingsLinkData = $($siblingsLink.data('accordion'));
-
-        accordionSvitchActive($siblingsLink, $siblingsLinkData);
+    $('.top-nav li li').on('click', function () {
+        var $thisIndex = $(this).closest('ul').siblings('a').closest('li').index();
+        accordionSvitchActive($thisIndex);
     });
-
-
-
-
-
-
-
-
 
 
   // form validation

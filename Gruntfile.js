@@ -79,7 +79,7 @@ module.exports = function (grunt) {
         src: ['./*.html'],
         dest: './',
         replacements: [{
-          from: '<script src="//localhost:35729/livereload.js"></script>',
+          from: '<script src="//localhost:78999/livereload.js"></script>',
           to: ''
         },{
           from: /\?timestamp=\d+/g,
