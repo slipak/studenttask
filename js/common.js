@@ -76,12 +76,11 @@ $(function() {
 
     var activeIndex = localStorage.getItem('activeSlide');
 
-    if(activeIndex === null) {
+    if(!activeIndex) {
         activeIndex = 0;
     }
 
-    topNavItems.eq(activeIndex).addClass('active');
-    accordionItems.eq(activeIndex).addClass('current');
+    accordionSvitchActive(activeIndex);
 
     function accordionSvitchActive(index) {
         accordionItems
@@ -91,12 +90,8 @@ $(function() {
             .removeClass('active')
             .eq(index).addClass('active');
 
-
-        // local storage rewrite index
-        //-----------------------------------------------------------------------------
-
         activeIndex = localStorage.setItem("activeSlide", index);
-    }
+    };
 
 
     $('.accordion-item header').on('click', function () {
