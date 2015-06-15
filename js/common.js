@@ -76,6 +76,10 @@ $(function() {
 
     var activeIndex = localStorage.getItem('activeSlide');
 
+    if(activeIndex === null) {
+        activeIndex = 0;
+    }
+
     topNavItems.eq(activeIndex).addClass('active');
     accordionItems.eq(activeIndex).addClass('current');
 
