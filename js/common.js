@@ -69,6 +69,11 @@ $(function() {
     var topNavItems = $('.top-nav ul').children();
 
 
+
+
+    // local storage get active
+    //-----------------------------------------------------------------------------
+
     var activeIndex = localStorage.getItem('activeSlide');
 
     topNavItems.eq(activeIndex).addClass('active');
@@ -81,6 +86,11 @@ $(function() {
         topNavItems
             .removeClass('active')
             .eq(index).addClass('active');
+
+
+        // local storage rewrite index
+        //-----------------------------------------------------------------------------
+
         activeIndex = localStorage.setItem("activeSlide", index);
     }
 
