@@ -62,17 +62,8 @@ $(function() {
   // accordion
   //-----------------------------------------------------------------------------
 
-
-
-
     var accordionItems = $('.accordion-item');
     var topNavItems = $('.top-nav ul').children();
-
-
-
-
-    // local storage get active
-    //-----------------------------------------------------------------------------
 
     var activeIndex = localStorage.getItem('activeSlide');
 
