@@ -62,11 +62,17 @@ $(function() {
   // accordion
   //-----------------------------------------------------------------------------
 
+
+
+
     var accordionItems = $('.accordion-item');
     var topNavItems = $('.top-nav ul').children();
 
-    accordionItems.first().addClass('current');
-    topNavItems.first().addClass('active');
+
+    var activeIndex = localStorage.getItem('activeSlide');
+
+    topNavItems.eq(activeIndex).addClass('active');
+    accordionItems.eq(activeIndex).addClass('current');
 
     function accordionSvitchActive(index) {
         accordionItems
@@ -75,7 +81,9 @@ $(function() {
         topNavItems
             .removeClass('active')
             .eq(index).addClass('active');
+        activeIndex = localStorage.setItem("activeSlide", index);
     }
+
 
     $('.accordion-item header').on('click', function () {
         var thisIndex = $(this).closest('.accordion-item').index();

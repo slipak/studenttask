@@ -1731,6 +1731,19 @@ html {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=10);
   filter: alpha(opacity=10);
 }
+.top-nav li:hover li a {
+  border-bottom-color: transparent;
+}
+.top-nav li:hover li a:before {
+  opacity: 0;
+}
+.lte-ie-8 .top-nav li:hover li a:before {
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+  filter: alpha(opacity=0);
+}
+.top-nav li:hover li a:hover {
+  background-color: #11A9AC;
+}
 .top-nav li + li {
   margin-left: 10px;
 }
